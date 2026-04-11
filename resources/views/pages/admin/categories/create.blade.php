@@ -1,24 +1,34 @@
 @extends('layouts.app')
 
+@php
+    $division_pj = [
+        'sarpras' => 'Sarpras',
+        'tu' => 'Tata usaha',
+        'tefa' => 'Tefa',
+    ]
+@endphp
+
 @section('content')
     <x-common.page-breadcrumb
-        pageTitle="Categories"
-        addButtonText="Add Category"
-        addButtonRoute="{{ route('admin.categories.create') }}"
-        label="Categories"
-        sublabel="Add Category"
+        pageTitle="Add Category"
+        :breadcrumbs="[
+            ['label' => 'Categories', 'url' => route('admin.categories.index')],
+            ['label' => 'Add Category', 'url' => route('admin.categories.create')],
+        ]"
     />
 
     <x-common.component-card>
-        <form action="{{ route('admin.categories.create') }}" method="POST" class="space-y-6">
+        <form action="{{ route('admin.categories.store') }}" method="POST" class="space-y-6">
             @csrf
 
+            {{-- Category Name --}}
             <x-form.form-elements.input
                 label="Category Name"
                 name="name"
-                placeholder="Input category name"
+                placeholder="Enter category name"
             />
 
+            {{-- Division --}}
             <x-form.form-elements.input
                 label="Division"
                 name="division"
@@ -33,7 +43,6 @@
                     Save Category
                 </button>
             </div>
-
         </form>
     </x-common.component-card>
 @endsection

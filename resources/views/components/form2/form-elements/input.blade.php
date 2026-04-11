@@ -12,9 +12,9 @@
 <div class="flex flex-col gap-1.5">
     <label for="{{ $name }}" class="flex items-center gap-2">
         {{ $label }}
-        @if($note)
+        {{-- opsional --}}
             <span class="text-sm font-light text-amber-500">{{ $note }}</span>
-        @endif
+
     </label>
 
     <input
@@ -25,7 +25,4 @@
         placeholder="{{ $placeholder }}"
         class="border border-gray-300 rounded-md p-3 placeholder:text-gray-400 placeholder:font-light focus:ring-brand-500 focus:border-brand-500 focus:outline-brand-500"
     >
-    @error($name)
-        <span class="text-sm text-red-500">{{ $message }}</span>
-    @enderror
 </div>

@@ -18,11 +18,9 @@
     >
         <option value="" disabled {{ old($name, $value)  ? '' : 'selected'  }} >{{ $placeholder }}</option>
 
-        @foreach ($options as $key => $option)
             <option value="{{ $key }}" {{ old($name, $value) == $key ? 'selected' : '' }}>
                 {{ $option }}
             </option>
-        @endforeach
     </select>
 
     @error($name)
