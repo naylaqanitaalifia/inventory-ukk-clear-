@@ -28,24 +28,24 @@
             <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
                 <div class="fixed bottom-4 right-4 z-50 w-80">
                     {{-- Success Message --}}
-                    {{-- opsional --}}
+                    @if(session('success'))
                         <div class="mb-4">
                             <x-ui.alert
                                 variant="success"
                                 :message="session('success')"
                             />
                         </div>
-                    {{-- opsional --}}
-
+                    @endif
+                    
                     {{-- Error Message --}}
-                    {{-- opsional --}}
+                    @if(session('error'))
                         <div class="mb-4">
                             <x-ui.alert
                                 variant="error"
                                 :message="session('error')"
                             />
                         </div>
-                    {{-- opsional --}}
+                    @endif
                 </div>
                 @yield('content')
             </div>

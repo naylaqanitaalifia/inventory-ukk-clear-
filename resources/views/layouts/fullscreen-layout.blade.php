@@ -29,14 +29,14 @@
             {{-- opsional --}}
 
             {{-- Error Message --}}
-            {{-- opsional --}}
+           @if(session('error'))
                 <div class="mb-4">
                     <x-ui.alert
                         variant="error"
                         :message="session('error')"
                     />
                 </div>
-            {{-- opsional --}}
+            @endif
         </div>
         @yield('content')
     {{-- </div> --}}

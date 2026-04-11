@@ -21,7 +21,8 @@
                         {{-- Dashboard --}}
                         <li>
                             <a href="/dashboard"
-                               class="menu-item group justify-start {{ request()->is('dashboard*') ? 'menu-item-active' : 'menu-item-inactive' }}">
+                               class="menu-item group justify-start">
+                               {{-- class="menu-item group justify-start {{ request()->is('dashboard*') ? 'menu-item-active' : 'menu-item-inactive' }}"> --}}
                                 <span class="{{ request()->is('dashboard*') ? 'menu-item-icon-active' : 'menu-item-icon-inactive' }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -112,13 +113,15 @@
 
                             <ul class="mt-2 space-y-1 ml-9">
                                 <li>
-                                    <a href="{{ route('admin.admins.index') }}"
+                                    <a href="#"
+                                    {{-- <a href="{{ route('admin.admins.index') }}" --}}
                                        class="menu-dropdown-item {{ request()->is('users/admin*') ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive' }}">
                                         Admin
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin.operators.index') }}"
+                                    <a href="#"
+                                    {{-- <a href="{{ route('admin.operators.index') }}" --}}
                                        class="menu-dropdown-item {{ request()->is('users/staff*') ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive' }}">
                                         Staff
                                     </a>
