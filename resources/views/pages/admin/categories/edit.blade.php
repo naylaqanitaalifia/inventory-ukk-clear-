@@ -30,14 +30,12 @@
                 {{-- required --}}
             />
 
-            {{-- Division PJ (Opsi) --}}
-            <x-form.form-elements.select-inputs
-                label="Division PJ"
-                name="division_pj"
-                :options="$division_pj"
-                id_field="id"
-                label_field="label"
-                :value="$category->division_pj"
+            {{-- Division --}}
+            <x-form.form-elements.input
+                label="Division"
+                name="division"
+                placeholder="Input division"
+                :value="$category->division"
             />
 
             <div class="flex justify-end gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">

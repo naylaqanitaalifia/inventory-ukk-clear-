@@ -4,6 +4,7 @@
 // use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\LendingController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,7 +15,7 @@ Route::get('/', function () {
 
 Route::name('admin.')->group(function() {
     Route::resource('categories', CategoryController::class);
-    // Route::resource('items', ItemController::class);
+    Route::resource('items', ItemController::class);
 });
 
 

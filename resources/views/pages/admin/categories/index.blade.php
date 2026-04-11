@@ -18,7 +18,7 @@
                 <th class="px-4 py-3 text-start text-sm font-medium text-gray-500 dark:text-gray-400">Total Items</th>
             </x-slot:thead>
 
-            @foreach ($categories as $category)
+            @forelse ($categories as $category)
                 <tr>
                     <td class="px-4 py-4 whitespace-nowrap">
                         <div class="text-sm font-medium text-gray-900 dark:text-white">
@@ -27,7 +27,7 @@
                     </td>
                     <td class="px-4 py-4 whitespace-nowrap">
                         <div class="text-sm font-medium text-gray-900 dark:text-white">
-                            {{ $category->division_pj }}
+                            {{ $category->division }}
                         </div>
                     </td>
                     <td class="px-4 py-4 whitespace-nowrap">
@@ -53,7 +53,13 @@
                         </div>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="100" class="py-3.5 text-center text-sm text-gray-500">
+                        No data available
+                    </td>
+                </tr>
+            @endforelse
 
         </x-tables.main-table>
     </div>

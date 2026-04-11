@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryFormRequest;
+use App\Http\Requests\UpdateCategoryFormRequest;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class CategoryController extends Controller
      */
     public function index(): View
     {
-        return view('pages.admin.categories.index');
+        $categories = Category::withCount('items')->get();
+        return view('pages.admin.categories.index', compact('categories'));
     }
 
     /**
@@ -32,7 +34,7 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryFormRequest $request): RedirectResponse
     {
-        dd($request->all());
+        // dd($request->all());
         try {
             $data = $request->validated();
             Category::create($data);
@@ -55,17 +57,25 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category): View
     {
-        //
+        return view('pages.admin.categories.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCategoryFormRequest $request, Category $category): RedirectResponse
     {
-        //
+        try {
+            $data = $request->validated();
+            $category->update($data);
+
+            return redirect()->route('admin.categories.index')->with('success', 'Category updated successfylly.');
+        } catch (\Throwable $th) {
+            report($th);
+            return back()->with('error', 'Failed to update category.');
+        }
     }
 
     /**

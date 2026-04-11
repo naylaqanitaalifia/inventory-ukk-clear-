@@ -20,7 +20,7 @@
                 <th class="px-4 py-3 text-start text-sm font-medium text-gray-500 dark:text-gray-400">Lending</th>
             </x-slot:thead>
 
-            @foreach ($items as $item)
+            @forelse ($items as $item)
                 <tr>
                     <td class="px-4 py-4 whitespace-nowrap">
                         <div class="text-sm font-medium text-gray-900 dark:text-white">
@@ -66,7 +66,13 @@
                         </div>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="100" class="py-3.5 text-center text-sm text-gray-500">
+                        No data available
+                    </td>
+                </tr>
+            @endforelse
         </x-tables.main-table>
     </div>
 @endsection
